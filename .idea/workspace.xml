@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28f4291d-69ea-47d6-ae7e-5da529a50d99" name="변경" comment="feat: react, nestjs, common 세팅" />
+    <list default="true" id="28f4291d-69ea-47d6-ae7e-5da529a50d99" name="변경" comment="feat: react, nestjs, common 세팅">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +21,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/packages/nestjs" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -95,7 +97,7 @@
       <workItem from="1706016076507" duration="3278000" />
       <workItem from="1706360586784" duration="51000" />
       <workItem from="1706360658610" duration="4423000" />
-      <workItem from="1706533652367" duration="3102000" />
+      <workItem from="1706533652367" duration="3472000" />
     </task>
     <task id="LOCAL-00001" summary="feat: react, nestjs, common 세팅">
       <option name="closed" value="true" />

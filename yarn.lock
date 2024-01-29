@@ -11623,6 +11623,7 @@ __metadata:
     "@babel/plugin-transform-optional-chaining": ^7.23.4
     "@babel/plugin-transform-private-methods": ^7.23.3
     "@babel/plugin-transform-private-property-in-object": ^7.23.4
+    prettier: ^3.2.4
     typescript: ^5.3.3
   languageName: unknown
   linkType: soft
@@ -12565,7 +12566,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.0.0":
+"prettier@npm:^3.0.0, prettier@npm:^3.2.4":
   version: 3.2.4
   resolution: "prettier@npm:3.2.4"
   bin:
