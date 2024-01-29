@@ -1,0 +1,17 @@
+{
+  "name": "@pe/common",
+  "packageManager": "yarn@3.7.0",
+  "main": "dist/index",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "clean": "rimraf -rf ./dist",
+    "compile": "tsc"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3"
+  }
+}

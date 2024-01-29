@@ -1,0 +1,26 @@
+{
+  "name": "pe-lotto",
+  "packageManager": "yarn@3.7.0",
+  "private": true,
+  "scripts": {
+    "common": "yarn workspace @pe/common",
+    "react": "yarn workspace @pe/react-app",
+    "nestjs": "yarn workspace @pe/nestjs"
+  },
+  "workspaces": [
+    "packages/*",
+    "packages/react-app",
+    "packages/nestjs"
+  ],
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-class-properties": "^7.23.3",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.23.4",
+    "@babel/plugin-transform-numeric-separator": "^7.23.4",
+    "@babel/plugin-transform-optional-chaining": "^7.23.4",
+    "@babel/plugin-transform-private-methods": "^7.23.3",
+    "@babel/plugin-transform-private-property-in-object": "^7.23.4"
+  }
+}
