@@ -3,9 +3,12 @@
   "packageManager": "yarn@3.7.0",
   "private": true,
   "workspaces": [
+    "packages/react-app",
+    "packages/nestjs",
     "packages/*"
   ],
   "devDependencies": {
+    "@babel/preset-env": "^7.23.9",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "eslint": "^8.33.0",
