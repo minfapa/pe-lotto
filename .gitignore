@@ -13,3 +13,5 @@
 .idea
 node_modules
 dist
+packages/nestjs/.env
+.yarn/cache
