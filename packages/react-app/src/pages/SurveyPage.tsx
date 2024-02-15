@@ -3,7 +3,7 @@ import { CircularProgress, Stack, Typography } from "@mui/material";
 import logo from "../assets/ci_logo.png";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { getUserById } from "../api/SurveyPageApi";
+import { decodeHashKey, getUserById } from "../api/SurveyPageApi";
 import { ISurveyResult } from "../types/SurveyTypes";
 
 export function SurveyPage() {
@@ -15,7 +15,9 @@ export function SurveyPage() {
     const location = useLocation();
 
     useEffect(() => {
-        const checkSubmitted = async (lottoNum: number) => {
+        const checkSubmitted = async (key: string) => {
+            const lottoNum = await decodeHashKey(key);
+            setLottoNumber(lottoNum);
             const row = await getUserById(lottoNum);
             if (row.id) {
                 setResult(row);
@@ -25,11 +27,9 @@ export function SurveyPage() {
         };
         setLoading(true);
         const queryParams = new URLSearchParams(location.search);
-        const number = queryParams.get("number");
-        if (number) {
-            const lottoNum = parseInt(number);
-            setLottoNumber(lottoNum);
-            void checkSubmitted(lottoNum);
+        const key = queryParams.get("key");
+        if (key) {
+            void checkSubmitted(key);
         } else {
             setLottoNumber(null);
         }

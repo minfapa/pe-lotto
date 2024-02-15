@@ -20,4 +20,9 @@ export class LottoUserController {
     async submit(@Body() user: LottoUser) {
         return this.lottoUser.submitUserSurvey(user);
     }
+
+    @Get("decode-hash")
+    async decodeHash(@Query("hash") hash: string) {
+        return (await this.lottoUser.decodeHash(hash)).lottoNumber;
+    }
 }

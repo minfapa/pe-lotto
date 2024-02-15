@@ -15,6 +15,11 @@ export const getAllUsers = async (): Promise<ISurveyResult[]> => {
     return response.json();
 };
 
+export const decodeHashKey = async (hash: string): Promise<number> => {
+    const response = await fetch(`/api/lotto-user/decode-hash?hash=${hash}`);
+    return response.json();
+};
+
 export async function getUserById(id: number): Promise<ISurveyResult> {
     const response = await fetch(`/api/lotto-user/get-user?id=${id}`);
     try {
