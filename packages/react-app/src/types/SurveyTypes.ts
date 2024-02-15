@@ -27,6 +27,14 @@ export enum AgeGroup {
 export enum Gender {
     male = "남성",
     female = "여성",
-    other = "기타",
+    notResponse = "응답 없음",
 }
 
+export interface ISurveyResult {
+    id: number;
+    name: string;
+    parish: Parish | "";
+    ageGroup: AgeGroup | "";
+    gender: Gender | "";
+    isElected: boolean;
+}

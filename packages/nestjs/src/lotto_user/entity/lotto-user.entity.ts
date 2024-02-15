@@ -11,8 +11,11 @@ export class LottoUser {
     @Column({ name: "parish" })
     parish: string;
 
-    @Column({ name: "age_range" })
-    ageRange: string;
+    @Column({ name: "age_group" })
+    ageGroup: string;
+
+    @Column({ name: "gender" })
+    gender: string;
 
     @Column({ name: "is_elected" })
     isElected: boolean;

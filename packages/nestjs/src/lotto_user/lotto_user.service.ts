@@ -11,6 +11,14 @@ export class LottoUserService {
     ) {}
 
     async getAllUsers(): Promise<LottoUser[]> {
-        return this.lottoUserRepository.find();
+        return await this.lottoUserRepository.find();
+    }
+
+    async submitUserSurvey(user: LottoUser) {
+        return await this.lottoUserRepository.save(user);
+    }
+
+    async getUserById(id: number) {
+        return await this.lottoUserRepository.findOneBy({ id });
     }
 }

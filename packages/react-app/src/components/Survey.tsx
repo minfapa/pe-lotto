@@ -1,23 +1,35 @@
-import { AgeGroup, Gender, Parish } from "../types/SurveyTypes";
-import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, Stack, TextField } from "@mui/material";
-import { useState } from "react";
+import { AgeGroup, Gender, Parish, ISurveyResult } from "../types/SurveyTypes";
+import {
+    Button,
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    SelectChangeEvent,
+    Stack,
+    TextField,
+    Typography,
+} from "@mui/material";
+import { ChangeEvent, useState } from "react";
+import { submitUserSurvey } from "../api/SurveyPageApi";
+import { useNavigate } from "react-router-dom";
 
-export interface SurveyResult {
-    name: string;
-    parish: Parish | "";
-    ageGroup: AgeGroup | "";
-    gender: Gender | "";
+interface SurveyProps {
+    id: number;
 }
 
-export function Survey() {
-    const [result, setResult] = useState<SurveyResult>({
+export function Survey({ id }: SurveyProps) {
+    const [result, setResult] = useState<ISurveyResult>({
         name: "",
         parish: "",
         ageGroup: "",
         gender: "",
-    } as SurveyResult);
+        isElected: false,
+    } as ISurveyResult);
 
-    const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const [submitted, setSubmitted] = useState<boolean>(false);
+
+    const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
         const name = event.target.name as keyof typeof result;
         const value = event.target.value;
 
@@ -42,9 +54,21 @@ export function Survey() {
             parish: "",
             ageGroup: "",
             gender: "",
-        } as SurveyResult);
+        } as ISurveyResult);
     };
 
+    const handleSubmit = async () => {
+        try {
+            await submitUserSurvey({ ...result, id });
+            setSubmitted(true);
+        } catch (error) {
+            console.error({ error });
+        }
+    };
+
+    if (submitted) {
+        return <SurveySubmitted result={result} />;
+    }
     return (
         <Stack spacing={2} direction={"column"}>
             <TextField
@@ -97,16 +121,28 @@ export function Survey() {
                     {Object.values(Gender).map((gender) => (
                         <MenuItem key={gender} value={gender}>
                             {gender}
-                        </MenuItem>))}
+                        </MenuItem>
+                    ))}
                 </Select>
             </FormControl>
-            <Stack spacing={2} direction={"row"} sx={{ padding: 1, height: "10vh" }}>
+            <Stack
+                spacing={2}
+                direction={"row"}
+                sx={{ padding: 1, height: "10vh" }}
+            >
                 <Button
                     variant="contained"
                     sx={{
                         width: "100%",
                         height: "100%",
                     }}
+                    onClick={handleSubmit}
+                    disabled={
+                        !result.name ||
+                        !result.parish ||
+                        !result.ageGroup ||
+                        !result.gender
+                    }
                 >
                     {"제출 하기"}
                 </Button>
@@ -122,5 +158,36 @@ export function Survey() {
                 </Button>
             </Stack>
         </Stack>
+    );
+}
+
+function SurveySubmitted({ result }: { result: ISurveyResult }) {
+    return (
+        <>
+            <Typography
+                fontSize={"x-large"}
+                fontWeight={"bolder"}
+                align={"center"}
+            >
+                {"성공적으로 제출 되었습니다!"}
+            </Typography>
+            <Stack
+                direction={"column"}
+                alignSelf={"center"}
+                spacing={1}
+                sx={{ padding: 3 }}
+            >
+                <Typography align={"left"}>{`이름: ${result.name}`}</Typography>
+                <Typography
+                    align={"left"}
+                >{`교구: ${result.parish}`}</Typography>
+                <Typography
+                    align={"left"}
+                >{`연령대: ${result.ageGroup}`}</Typography>
+                <Typography
+                    align={"left"}
+                >{`성별: ${result.gender}`}</Typography>
+            </Stack>
+        </>
     );
 }
