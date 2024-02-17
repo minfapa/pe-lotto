@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import { submitUserSurvey } from "../api/SurveyPageApi";
-import { useNavigate } from "react-router-dom";
 
 interface SurveyProps {
     id: number;
